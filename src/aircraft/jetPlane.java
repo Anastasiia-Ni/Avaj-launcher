@@ -1,11 +1,11 @@
 
-class jetPlane extends Aircraft {
+public class jetPlane extends Aircraft {
 
-    jetPlane (long p_id, String p_name, Coordinates p_coordinate) { // +
+    public jetPlane (long p_id, String p_name, Coordinates p_coordinate) { // +
 
     }
 
-    void updateConditions() { // +
+    public void updateConditions() { // +
 
     }
 }

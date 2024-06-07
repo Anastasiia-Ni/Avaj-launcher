@@ -1,13 +1,13 @@
 
 // Singleton
-class WeatherProvider {
-    String[] weather; // -
+public class WeatherProvider {
+    private String[] weather;
 
-    WeatherProvider() { // -
+    private WeatherProvider() {
 
     }
 
-    String getCurrentWeather (Coordinates p_coordinate) {   // +
+    public String getCurrentWeather (Coordinates p_coordinate) {   // +
 
     }
 }

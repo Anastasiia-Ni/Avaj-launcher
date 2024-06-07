@@ -1,17 +1,18 @@
+import java.util.List;
 
-class Tower {
+public class Tower {
     
-    List<Flyable*> observers; // -
+    private List<Flyable> observers;
     
-    void register(Flyable* p_flyable) { // +
+    public void register(Flyable p_flyable) {
 
     }
 
-    void unregister(Flyable* p_flyable) { // +
+    public void unregister(Flyable p_flyable) {
 
     }
 
-    void conditionChanged() { // #
+    protected void conditionChanged() {
 
     }
 }
