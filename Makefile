@@ -13,7 +13,7 @@ compile: $(SOURCE_FILE)
 	$(JAVAC) @$<
 
 clean:
-	rm -f *.class
+	find . -type f -name '*.class' -delete
 	rm -f $(SOURCE_FILE)
 
 .PHONY: all compile clean

@@ -1,4 +1,4 @@
-
+package src.aircraft;
 public class Coordinates {
     private int longitude;
     private int latitude;
@@ -8,15 +8,15 @@ public class Coordinates {
 
     }
 
-    public int getLongitude() {
+    // public int getLongitude() {
 
-    }
+    // }
 
-    public int getLatitude() {
+    // public int getLatitude() {
 
-    }
+    // }
 
-    public int getHeight() {
+    // public int getHeight() {
 
-    }
+    // }
 }
