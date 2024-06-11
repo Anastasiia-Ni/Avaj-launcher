@@ -17,3 +17,6 @@ clean:
 	rm -f $(SOURCE_FILE)
 
 .PHONY: all compile clean
+
+
+# java src/App scenario/scenario.txt

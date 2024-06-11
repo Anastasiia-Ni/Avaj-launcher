@@ -4,19 +4,27 @@ public class Coordinates {
     private int latitude;
     private int height;
 
-    private Coordinates (int p_longitude, int p_latitude, int p_height) {
-
+    // package-private constructor
+    Coordinates (int p_longitude, int p_latitude, int p_height) {
+        longitude = p_longitude;
+        latitude = p_latitude;
+        height = p_height;
     }
 
-    // public int getLongitude() {
+    public int getLongitude() {
+        return longitude;
+    }
 
-    // }
+    public int getLatitude() {
+        return latitude;
+    }
 
-    // public int getLatitude() {
+    public int getHeight() {
+        return height;
+    }
 
-    // }
-
-    // public int getHeight() {
-
-    // }
+    // Фабричный метод создания коорд для обхода приватного пакетного конструктора
+    public static Coordinates of(int longitude, int latitude, int height) {
+        return new Coordinates(longitude, latitude, height);
+    }
 }
