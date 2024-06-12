@@ -11,17 +11,17 @@ public class Tower {
     
     public void register(Flyable p_flyable) {
         observers.add(p_flyable);
-        System.out.println("");
+        System.out.println("Tower says: ");
     }
 
     public void unregister(Flyable p_flyable) {
         observers.remove(p_flyable);
-        System.out.println("");
+        System.out.println("Tower says: ");
     }
 
     protected void conditionChanged() {
         for (Flyable observer : observers) {
-            // TODO update
+            observer.updateConditions();
         }
     }
 }

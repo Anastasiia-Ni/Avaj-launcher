@@ -13,6 +13,9 @@ import src.utils.FileReader;
 import src.utils.MyException;
 import src.utils.NumberChecker;
 
+// TODO
+// записать все в файл simulation.txt
+
 public class App {
 
     private static int count = 0;
@@ -34,7 +37,6 @@ public class App {
             catch (MyException e) {
                 System.out.println("An error occurred: " + e.getMessage());
             }
-            // создать класс парсер для открывания проверки  и считывания файл
         }
         else {
             System.out.println("Wrong number of arguments. One argument is expected: the file path.");
@@ -62,15 +64,21 @@ public class App {
             int longitude = NumberChecker.parseNumber(line[2], i);
             int latitude = NumberChecker.parseNumber(line[3], i);
             int height = NumberChecker.parseNumber(line[4], i);
+            if (height > 100) {
+                height = 100;
+            }
 
             Coordinates coordinate = Coordinates.of(longitude, latitude, height);
             flyables.add(myFactory.newAircraft(type, line[1], coordinate));
-            // System.out.println(type + " " + name + " " + longitude + " " + latitude + " " + height); // DELETE
+            // System.out.println(type + " " + line[1] + " " + longitude + " " + latitude + " " + height); // DELETE
         }
     }
 
     public static void simulation () {
-
+        for (Flyable flyable : flyables) {
+            // weatherTower.register(flyable);
+            // flyable.registerTower(weatherTower);
+        }
     }
 
 }

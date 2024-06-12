@@ -16,6 +16,8 @@ clean:
 	find . -type f -name '*.class' -delete
 	rm -f $(SOURCE_FILE)
 
+fclean: clean
+
 .PHONY: all compile clean
 
 

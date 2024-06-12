@@ -6,6 +6,24 @@ public class Baloon extends Aircraft {
     }
 
     public void updateConditions() {
+        String weather = weatherTower.getWeather(coordinates);
+        String weatherMsg = weatherTower.getMsg(weather);
 
+        switch (weather) {
+            case ("SUN"):
+                this.coordinates.setLongitude(coordinates.getLongitude() + 2);
+                this.coordinates.setHeight(this.coordinates.getHeight() + 4);
+                break;
+            case ("RAIN"):
+                this.coordinates.setHeight(this.coordinates.getHeight() - 5);
+                break;
+            case ("FOG"):
+                this.coordinates.setHeight(this.coordinates.getHeight() - 3);
+                break;
+            case ("SNOW"):
+                this.coordinates.setHeight(this.coordinates.getHeight() - 15);
+                break;
+            }
+        System.out.println("Baloon#" + name + "(" + id + "): " + weatherMsg);
     }
 }

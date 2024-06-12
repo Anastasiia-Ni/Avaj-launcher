@@ -11,7 +11,5 @@ public class Aircraft extends Flyable{
     }
 
     @Override
-    public void updateConditions() {
-        // Реализация должна быть предоставлена в подклассах
-    }
+    public void updateConditions() {}
 }

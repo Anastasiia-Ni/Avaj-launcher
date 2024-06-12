@@ -23,6 +23,18 @@ public class Coordinates {
         return height;
     }
 
+    public void setLongitude(int longitude) { 
+        this.longitude = longitude; 
+    }
+
+    public void setLatitude(int latitude) { 
+        this.latitude = latitude; 
+    }
+
+    public void setHeight(int height) { 
+        this.height = height > 100 ? 100 : height; 
+    }
+
     // Фабричный метод создания коорд для обхода приватного пакетного конструктора
     public static Coordinates of(int longitude, int latitude, int height) {
         return new Coordinates(longitude, latitude, height);
