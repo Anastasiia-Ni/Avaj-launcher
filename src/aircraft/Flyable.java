@@ -12,4 +12,7 @@ public abstract class Flyable {
         p_tower.register(this);
     }
 
+    public abstract long getId();
+    public abstract String getName();
+    public abstract Coordinates getCoordinates();
 }

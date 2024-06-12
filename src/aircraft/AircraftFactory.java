@@ -16,7 +16,7 @@ public class AircraftFactory {
                 newAircraft = new Helicopter(id, p_name, p_coordinate);
                 break;
             case ("Jetplane"):
-                newAircraft = new jetPlane(id, p_name, p_coordinate);
+                newAircraft = new JetPlane(id, p_name, p_coordinate);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown aircraft type: " + p_type);

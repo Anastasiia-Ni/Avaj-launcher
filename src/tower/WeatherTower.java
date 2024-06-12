@@ -12,11 +12,11 @@ public class WeatherTower extends Tower {
     }
 
     public void changeWeather() {
-
+        // TODO
     }
 
     public void register(Flyable flyable) {
-        // логика регистрации объекта
+        super.register(flyable);
     }
 
     public String getMsg(String weather) {

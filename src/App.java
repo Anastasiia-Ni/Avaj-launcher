@@ -76,7 +76,7 @@ public class App {
 
     public static void simulation () {
         for (Flyable flyable : flyables) {
-            // weatherTower.register(flyable);
+            weatherTower.register(flyable);
             // flyable.registerTower(weatherTower);
         }
     }
