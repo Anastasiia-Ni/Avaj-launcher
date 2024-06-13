@@ -13,6 +13,9 @@ import src.utils.FileReader;
 import src.utils.MyException;
 import src.utils.NumberChecker;
 
+// ID больше лонг максимального
+// проверка если координаты стали меньше 0 или больше максимального инта
+
 public class App {
 
     private static int count = 0;
@@ -45,8 +48,7 @@ public class App {
     private static void createAircrafts(List<String> content) throws MyException {
         String number = content.get(0);
         
-        int count = NumberChecker.parseNumber(number, 0);
-        System.out.println("Count: " + count); // DELETE
+        count = NumberChecker.parseNumber(number, 0);
 
         for (int i = 1; i < content.size(); ++i) {
             String[] line = content.get(i).split("\\s+");
@@ -80,18 +82,13 @@ public class App {
         for (Flyable flyable : flyables) {
             if (flyable.getCoordinates().getHeight() <= 0) {
                 weatherTower.unregister(flyable);
-                // flyables.remove(flyable); - если надо будет удалить, только через итератор
             }
         }
-        // проверка высоты
 
-        // for (int i = 0; i < 3; ++i) {
-        //     System.out.println("ROUND: " + (i + 1));
-        //     // weatherTower.changeWeather();
-        //     for (Flyable flyable : flyables) {
-        //         flyable.updateConditions();
-        //     }
-        // }
+        for (int i = 0; i < count; ++i) {
+            System.out.println("ROUND: " + (i + 1)); // delete
+            weatherTower.changeWeather();
+        }
         
     }
 

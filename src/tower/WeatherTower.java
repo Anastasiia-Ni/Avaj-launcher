@@ -8,7 +8,6 @@ public class WeatherTower extends Tower {
     public WeatherMsg weatherMsg = new WeatherMsg();
     WeatherProvider weatherProvider = WeatherProvider.getInstance();
 
-    // public WeatherTower () {}
     public String getWeather(Coordinates p_coordinate) {
         return this.weatherProvider.getCurrentWeather(p_coordinate);
     }

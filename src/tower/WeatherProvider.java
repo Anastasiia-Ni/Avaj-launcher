@@ -1,7 +1,5 @@
 package src.tower;
 
-import java.util.Random;
-
 import src.aircraft.Coordinates;
 
 // Singleton - реализация . приватный конструктор и статический метод для доступа к единственному экземпляру
@@ -15,14 +13,8 @@ public class WeatherProvider {
         return instance;
     }
 
-    public static WeatherProvider getWeatherProvider() {
-        WeatherProvider weather = new WeatherProvider();
-        return weather;
-    }
-
     public String getCurrentWeather (Coordinates p_coordinate) {
-        int gen = p_coordinate.getLongitude();
-        return weather[0];
-
+        long generator = Math.abs(p_coordinate.getLongitude() - p_coordinate.getLongitude() + p_coordinate.getHeight());
+        return weather[(int) generator % 4];
     }
 }

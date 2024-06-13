@@ -5,15 +5,20 @@ import java.util.ArrayList;
 import src.aircraft.Flyable;
 
 
+
 public class Tower {
     
     private List<Flyable> observers = new ArrayList<Flyable>();
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
     
     public void register(Flyable p_flyable) {
         if (!observers.contains(p_flyable)) {
             observers.add(p_flyable);
             String type = p_flyable.getClass().getSimpleName();
-            System.out.println("Tower says: " + type + "#" + p_flyable.getName() + "(" + p_flyable.getId() + ") registered to weather tower.");
+            String message = "Tower says: " + type + "#" + p_flyable.getName() + "(" + p_flyable.getId() + ") registered to weather tower.";
+            System.out.println(ANSI_YELLOW + message + ANSI_RESET);
         }
     }
 
@@ -21,13 +26,20 @@ public class Tower {
         if (observers.contains(p_flyable)) {
             observers.remove(p_flyable);
             String type = p_flyable.getClass().getSimpleName();
-            System.out.println("Tower says: " + type + "#" + p_flyable.getName() + "(" + p_flyable.getId() + ") unregistered from weather tower.");
+            String message = "Tower says: " + type + "#" + p_flyable.getName() + "(" + p_flyable.getId() + ") unregistered from weather tower.";
+            System.out.println(ANSI_RED + message + ANSI_RESET);
         }
     }
 
     protected void conditionChanged() {
-        for (Flyable observer : observers) {
-            observer.updateConditions();
+        for (int i = 0; i < observers.size();) {
+            observers.get(i).updateConditions();
+            if (observers.get(i).getCoordinates().getHeight() <= 0) {
+                unregister(observers.get(i));
+            }
+            else {
+                ++i;
+            }
         }
     }
 }

@@ -27,17 +27,22 @@ public class FileReader {
         }
 
         Path path = Paths.get(filePath);
-
+        
         if (Files.size(path) == 0) {
             throw new IOException("File " + filePath + " is empty.");
         }
-
+        
         try (BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+            long lineCount = 0;
             String line;
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
                 if (!line.isBlank()) {
                     fileContent.add(line);
+                    lineCount++;
+                }
+                if (lineCount > Integer.MAX_VALUE) {
+                    throw new MyException("File " + filePath + " too big.");
                 }
             }
         }
