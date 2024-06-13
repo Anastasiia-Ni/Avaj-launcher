@@ -1,6 +1,8 @@
 package src;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,9 +15,6 @@ import src.utils.FileReader;
 import src.utils.MyException;
 import src.utils.NumberChecker;
 
-// ID больше лонг максимального
-// проверка если координаты стали меньше 0 или больше максимального инта
-
 public class App {
 
     private static int count = 0;
@@ -23,29 +22,29 @@ public class App {
     private static WeatherTower weatherTower = new WeatherTower();
     private static AircraftFactory myFactory = AircraftFactory.getInstance();
 
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_RED = "\u001B[31m";
-
     public static void main( String[] args ) {
-        if (args.length == 1) {
-            try {
+        try {
+
+            PrintStream outcome = new PrintStream(new FileOutputStream("simulation.txt"));
+            System.setOut(outcome);
+            System.setErr(outcome);
+            
+            if (args.length == 1) {
                 FileReader parser = new FileReader(args[0]);
                 parser.processFile();
                 createAircrafts(parser.getContent());
-                // записать все в файл simulation.txt
                 simulation();
             }
-            catch (IOException e){
-                System.out.println("Error processing file: " + ANSI_RED + e.getMessage() + ANSI_RESET);
-            }
-            catch (MyException e) {
-                System.out.println("An error occurred: " + e.getMessage());
+             else {
+                System.out.println("Wrong number of arguments. One argument is expected: the file path.");
             }
         }
-        else {
-            System.out.println(ANSI_RED + "Wrong number of arguments." + ANSI_RESET + " One argument is expected: the file path." );
+        catch (IOException e){
+            System.out.println("Error processing file: " +  e.getMessage());
         }
-
+        catch (MyException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
     }
 
     private static void createAircrafts(List<String> content) throws MyException {
@@ -87,7 +86,5 @@ public class App {
         for (int i = 0; i < count; ++i) {
             weatherTower.changeWeather();
         }
-        
     }
-
 }

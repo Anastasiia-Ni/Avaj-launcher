@@ -13,26 +13,23 @@ public class FileReader {
     private String filePath;
     private List<String> fileContent  = new ArrayList<>();
 
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_RED = "\u001B[31m";
-
     public FileReader(String path) {
         this.filePath = path;
     }
 
     public void processFile() throws IOException, MyException {
         if (!Files.exists(Paths.get(filePath))) {
-            throw new IOException(ANSI_RED + "File " + filePath + " not found." + ANSI_RESET);
+            throw new IOException("File " + filePath + " not found.");
         }
 
         if (!Files.isReadable(Paths.get(filePath))) {
-            throw new IOException(ANSI_RED + "File " + filePath + " not readable." + ANSI_RESET);
+            throw new IOException("File " + filePath + " not readable.");
         }
 
         Path path = Paths.get(filePath);
         
         if (Files.size(path) == 0) {
-            throw new IOException(ANSI_RED + "File " + filePath + " is empty." + ANSI_RESET);
+            throw new IOException("File " + filePath + " is empty.");
         }
         
         try (BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
@@ -51,7 +48,7 @@ public class FileReader {
         }
 
         if (fileContent.size() == 0) {
-            throw new IOException(ANSI_RED + "File " + filePath + " does not contain data." + ANSI_RESET);
+            throw new IOException("File " + filePath + " does not contain data.");
         }
     }
 
