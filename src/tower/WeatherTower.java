@@ -6,17 +6,23 @@ import src.utils.WeatherMsg;
 
 public class WeatherTower extends Tower {
     public WeatherMsg weatherMsg = new WeatherMsg();
-    
+    WeatherProvider weatherProvider = WeatherProvider.getInstance();
+
+    // public WeatherTower () {}
     public String getWeather(Coordinates p_coordinate) {
-        return "SUN";
+        return this.weatherProvider.getCurrentWeather(p_coordinate);
     }
 
     public void changeWeather() {
-        // TODO
+        conditionChanged();
     }
 
     public void register(Flyable flyable) {
         super.register(flyable);
+    }
+
+    public void unregister(Flyable flyable) {
+        super.unregister(flyable);
     }
 
     public String getMsg(String weather) {

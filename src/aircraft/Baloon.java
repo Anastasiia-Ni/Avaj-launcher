@@ -6,8 +6,9 @@ public class Baloon extends Aircraft {
     }
 
     public void updateConditions() {
-        String weather = weatherTower.getWeather(coordinates);
-        String weatherMsg = weatherTower.getMsg(weather);
+
+        String weather = super.weatherTower.getWeather(coordinates);
+        String weatherMsg = super.weatherTower.getMsg(weather);
 
         switch (weather) {
             case ("SUN"):

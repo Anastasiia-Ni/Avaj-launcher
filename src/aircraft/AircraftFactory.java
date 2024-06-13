@@ -4,6 +4,13 @@ package src.aircraft;
 public class AircraftFactory {
     private  static int id = 0;
 
+    // Eager Initialization of singleton
+    private static final AircraftFactory instance = new AircraftFactory();
+    private AircraftFactory() {}
+    public static AircraftFactory getInstance() {
+        return instance;
+    }
+
     public Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinate) {
         Flyable newAircraft = null;
         ++id;

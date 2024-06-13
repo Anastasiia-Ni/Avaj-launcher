@@ -13,15 +13,12 @@ import src.utils.FileReader;
 import src.utils.MyException;
 import src.utils.NumberChecker;
 
-// TODO
-// записать все в файл simulation.txt
-
 public class App {
 
     private static int count = 0;
     private static List<Flyable> flyables = new ArrayList<Flyable>();
     private static WeatherTower weatherTower = new WeatherTower();
-    private static AircraftFactory myFactory = new AircraftFactory();
+    private static AircraftFactory myFactory = AircraftFactory.getInstance();
 
     public static void main( String[] args ) {
         if (args.length == 1) {
@@ -29,6 +26,7 @@ public class App {
                 FileReader parser = new FileReader(args[0]);
                 parser.processFile();
                 createAircrafts(parser.getContent());
+                // записать все в файл simulation.txt
                 simulation();
             }
             catch (IOException e){
@@ -70,15 +68,31 @@ public class App {
 
             Coordinates coordinate = Coordinates.of(longitude, latitude, height);
             flyables.add(myFactory.newAircraft(type, line[1], coordinate));
-            // System.out.println(type + " " + line[1] + " " + longitude + " " + latitude + " " + height); // DELETE
         }
     }
 
     public static void simulation () {
         for (Flyable flyable : flyables) {
-            weatherTower.register(flyable);
-            // flyable.registerTower(weatherTower);
+            // weatherTower.register(flyable);
+            flyable.registerTower(weatherTower);
         }
+
+        for (Flyable flyable : flyables) {
+            if (flyable.getCoordinates().getHeight() <= 0) {
+                weatherTower.unregister(flyable);
+                // flyables.remove(flyable); - если надо будет удалить, только через итератор
+            }
+        }
+        // проверка высоты
+
+        // for (int i = 0; i < 3; ++i) {
+        //     System.out.println("ROUND: " + (i + 1));
+        //     // weatherTower.changeWeather();
+        //     for (Flyable flyable : flyables) {
+        //         flyable.updateConditions();
+        //     }
+        // }
+        
     }
 
 }
