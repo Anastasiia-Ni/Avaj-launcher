@@ -9,6 +9,9 @@ import java.util.Random;
 public class WeatherMsg {
     private Map<String, List<String>> weatherMessages;
 
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
     public WeatherMsg() {
         this.weatherMessages = new HashMap<>();
         initWeatherMessages();
@@ -46,7 +49,7 @@ public class WeatherMsg {
         if (messages == null || messages.isEmpty()) {
             return "No messages available for this weather type.";
         }
-        return messages.get(new Random().nextInt(messages.size()));
+        return ANSI_GREEN + messages.get(new Random().nextInt(messages.size())) + ANSI_RESET;
     }
 
 }

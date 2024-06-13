@@ -26,6 +26,5 @@ public class Baloon extends Aircraft {
                 break;
             }
         System.out.println("Baloon#" + name + "(" + id + "): " + weatherMsg);
-        System.out.println("Height: " + this.getCoordinates().getHeight()); // DELETE
     }
 }

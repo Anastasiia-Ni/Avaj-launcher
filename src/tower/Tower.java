@@ -10,15 +10,15 @@ public class Tower {
     
     private List<Flyable> observers = new ArrayList<Flyable>();
     public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_YELLOW = "\u001B[33m";
     
     public void register(Flyable p_flyable) {
         if (!observers.contains(p_flyable)) {
             observers.add(p_flyable);
             String type = p_flyable.getClass().getSimpleName();
-            String message = "Tower says: " + type + "#" + p_flyable.getName() + "(" + p_flyable.getId() + ") registered to weather tower.";
-            System.out.println(ANSI_YELLOW + message + ANSI_RESET);
+            String message = type + "#" + p_flyable.getName() + "(" + p_flyable.getId() + ") registered to weather tower.";
+            System.out.println("Tower says: " + ANSI_YELLOW + message + ANSI_RESET);
         }
     }
 
@@ -26,8 +26,8 @@ public class Tower {
         if (observers.contains(p_flyable)) {
             observers.remove(p_flyable);
             String type = p_flyable.getClass().getSimpleName();
-            String message = "Tower says: " + type + "#" + p_flyable.getName() + "(" + p_flyable.getId() + ") unregistered from weather tower.";
-            System.out.println(ANSI_RED + message + ANSI_RESET);
+            String message = type + "#" + p_flyable.getName() + "(" + p_flyable.getId() + ") unregistered from weather tower.";
+            System.out.println("Tower says: " + ANSI_PURPLE + message + ANSI_RESET);
         }
     }
 

@@ -26,6 +26,5 @@ public class JetPlane extends Aircraft {
                 break;
             }
         System.out.println("JetPlane#" + name + "(" + id + "): " + weatherMsg);
-        System.out.println("Height: " + this.getCoordinates().getHeight()); // DELETE
     }
 }

@@ -25,6 +25,5 @@ public class Helicopter extends Aircraft {
                 break;
             }
         System.out.println("Helicopter#" + name + "(" + id + "): " + weatherMsg);
-        System.out.println("Height: " + this.getCoordinates().getHeight()); // DELETE
     }
 }

@@ -23,6 +23,9 @@ public class App {
     private static WeatherTower weatherTower = new WeatherTower();
     private static AircraftFactory myFactory = AircraftFactory.getInstance();
 
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+
     public static void main( String[] args ) {
         if (args.length == 1) {
             try {
@@ -33,14 +36,14 @@ public class App {
                 simulation();
             }
             catch (IOException e){
-                System.out.println("Error processing file: " + e.getMessage());
+                System.out.println("Error processing file: " + ANSI_RED + e.getMessage() + ANSI_RESET);
             }
             catch (MyException e) {
                 System.out.println("An error occurred: " + e.getMessage());
             }
         }
         else {
-            System.out.println("Wrong number of arguments. One argument is expected: the file path.");
+            System.out.println(ANSI_RED + "Wrong number of arguments." + ANSI_RESET + " One argument is expected: the file path." );
         }
 
     }
@@ -75,18 +78,13 @@ public class App {
 
     public static void simulation () {
         for (Flyable flyable : flyables) {
-            // weatherTower.register(flyable);
             flyable.registerTower(weatherTower);
-        }
-
-        for (Flyable flyable : flyables) {
             if (flyable.getCoordinates().getHeight() <= 0) {
                 weatherTower.unregister(flyable);
             }
         }
 
         for (int i = 0; i < count; ++i) {
-            System.out.println("ROUND: " + (i + 1)); // delete
             weatherTower.changeWeather();
         }
         
