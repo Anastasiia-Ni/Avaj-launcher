@@ -23,11 +23,17 @@ public class Coordinates {
         return height;
     }
 
-    public void setLongitude(int longitude) { 
+    public void setLongitude(int longitude) {
+        if (longitude < 0) {
+            longitude = Integer.MAX_VALUE + longitude;
+        }
         this.longitude = longitude; 
     }
 
     public void setLatitude(int latitude) { 
+        if (latitude < 0) {
+            latitude = Integer.MAX_VALUE + latitude;
+        }
         this.latitude = latitude; 
     }
 
