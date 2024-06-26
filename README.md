@@ -83,4 +83,5 @@ make
 ## Usage:
 ```
 java src/App scenario/scenario.txt
+cat -e simulation.txt
 ```
