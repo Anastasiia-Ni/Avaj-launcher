@@ -7,6 +7,9 @@ Utilizing core design patterns such as Observer, Singleton, and Factory, the sim
 The project is developed under strict adherence to Java's best practices and clean code principles.
 
 
+<img src="https://github.com/Anastasiia-Ni/Avaj-launcher/blob/master/model/avaj_uml.png" width="800">
+
+
 ### Requirements
 - Java LTS Version: Ensure usage of language features up to the latest Java LTS version.
 - Environment: The application must run in a diverse OS environment without dependency on external libraries, build tools, or code generators.
@@ -46,6 +49,7 @@ Each three-dimensional point experiences its unique weather condition, which cou
 - FOG
 - SUN
 - SNOW
+
 The weather generation algorithm considers the coordinates of the point.
 
 ### Aircraft Specifications
@@ -77,3 +81,6 @@ or
 make
 ```
 ## Usage:
+```
+java src/App scenario/scenario.txt
+```
