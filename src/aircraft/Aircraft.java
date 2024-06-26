@@ -1,4 +1,10 @@
 package src.aircraft;
+
+/**
+ * The Aircraft class represents a generic aircraft and extends the Flyable class.
+ * It contains common properties and methods that are shared among different types of aircraft.
+ */
+
 public class Aircraft extends Flyable{
     protected long id;
     protected String name;

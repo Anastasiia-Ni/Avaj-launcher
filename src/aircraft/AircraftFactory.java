@@ -1,16 +1,28 @@
 package src.aircraft;
 
-// Singleton
+/**
+ * The AircraftFactory class is a singleton that provides a method to create instances of different types of aircraft.
+ * It ensures that only one instance of the factory exists and provides eager initialization.
+ */
+
 public class AircraftFactory {
     private  static int id = 0;
 
-    // Eager Initialization of singleton
+    /** The singleton instance of AircraftFactory. */
     private static final AircraftFactory instance = new AircraftFactory();
+    
+    /**
+     * Private constructor to prevent instantiation.
+     * This is part of the Singleton design pattern.
+     */
     private AircraftFactory() {}
+
+    /** Returns the singleton instance of AircraftFactory. */
     public static AircraftFactory getInstance() {
         return instance;
     }
 
+    /** Creates a new aircraft of the specified type with the given name and coordinates. */
     public Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinate) {
         Flyable newAircraft = null;
         ++id;
