@@ -15,6 +15,7 @@ public class Baloon extends Aircraft {
      * This method retrieves the current weather from the WeatherTower and adjusts the Baloon's coordinates accordingly.
      * It also prints a weather-related message.
      */
+    @Override
     public void updateConditions() {
 
         String weather = super.weatherTower.getWeather(coordinates);

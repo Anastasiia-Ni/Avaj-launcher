@@ -5,7 +5,7 @@ package src.aircraft;
  * It contains common properties and methods that are shared among different types of aircraft.
  */
 
-public class Aircraft extends Flyable{
+public class Aircraft extends Flyable {
     protected long id;
     protected String name;
     protected Coordinates coordinates;
@@ -16,14 +16,17 @@ public class Aircraft extends Flyable{
         coordinates = p_coordinates;
     }
 
+    @Override
     public long getId() {
         return id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public Coordinates getCoordinates() {
         return coordinates;
     }

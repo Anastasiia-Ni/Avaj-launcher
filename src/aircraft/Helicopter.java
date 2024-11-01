@@ -16,6 +16,7 @@ public class Helicopter extends Aircraft {
      * Updates the helicopter's conditions based on the current weather received from the weather tower.
      * Adjusts longitude and height based on specific weather conditions and logs corresponding messages.
      */
+    @Override
     public void updateConditions() {
         String weather = weatherTower.getWeather(coordinates);
         String weatherMsg = weatherTower.getMsg(weather);

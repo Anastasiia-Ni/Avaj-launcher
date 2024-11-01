@@ -24,23 +24,25 @@ public class App {
     private static List<Flyable> flyables = new ArrayList<Flyable>(); // List of flyable objects
     private static WeatherTower weatherTower = new WeatherTower(); // Weather tower object
     private static AircraftFactory myFactory = AircraftFactory.getInstance(); // Singleton instance of AircraftFactory
-
+    private static PrintStream originalOut = System.out;
+    
     /** Main method: entry point of the application.  */
     public static void main( String[] args ) {
-        try {
-
-            // Redirecting output to simulation.txt
-            //System.setErr(outcome); // Redirect standard error
-            
+        try {            
             if (args.length == 1) {           
-                FileReader parser = new FileReader(args[0]); // Creating a FileReader instance with the scenario file path
-                parser.processFile(); // Processing the scenario file to validate and read content
+                FileReader parser = new FileReader(args[0]);
+                parser.processFile();
+                
+                createAircrafts(parser.getContent());
                 
                 PrintStream outcome = new PrintStream(new FileOutputStream("simulation.txt"));
-                System.setOut(outcome); // Redirect standard output
+                System.out.println("Starting simulation...");
+                System.setOut(outcome);
 
-                createAircrafts(parser.getContent()); // Creating aircraft objects based on parsed content
-                simulation(); // Starting the simulation
+                simulation();
+                
+                System.setOut(originalOut);
+                System.out.println("Simulation completed.");
             }
              else {
                 System.out.println("Wrong number of arguments. One argument is expected: the file path.");
@@ -58,12 +60,12 @@ public class App {
     private static void createAircrafts(List<String> content) throws MyException {
         String number = content.get(0); // First line of the content is the number of weather changes
         
-        count = NumberChecker.parseNumber(number, 0); // Parsing the number of weather changes
+        count = NumberChecker.parseNumber(number, 0);
 
         for (int i = 1; i < content.size(); ++i) {
-            String[] line = content.get(i).split("\\s+"); // Splitting each line into parts
+            String[] line = content.get(i).split("\\s+");
             if (line.length != 5) {
-                throw new MyException("Describes an aircraft error in line " + i); // Invalid line format
+                throw new MyException("Describes an aircraft error in line " + i);
             }
 
             List<String> validTypes = Arrays.asList("Baloon", "Helicopter", "Jetplane");

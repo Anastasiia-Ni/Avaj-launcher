@@ -52,7 +52,6 @@ public class Coordinates {
     /**
      * Factory method for creating a new Coordinates object.
      * This method is used to bypass the package-private constructor.
-     * Фабричный метод создания коорд для обхода приватного пакетного конструктора
      */
 
     public static Coordinates of(int longitude, int latitude, int height) {
