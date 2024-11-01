@@ -30,13 +30,15 @@ public class App {
         try {
 
             // Redirecting output to simulation.txt
-            PrintStream outcome = new PrintStream(new FileOutputStream("simulation.txt"));
-            System.setOut(outcome); // Redirect standard output
-            System.setErr(outcome); // Redirect standard error
+            //System.setErr(outcome); // Redirect standard error
             
-            if (args.length == 1) {
+            if (args.length == 1) {           
                 FileReader parser = new FileReader(args[0]); // Creating a FileReader instance with the scenario file path
                 parser.processFile(); // Processing the scenario file to validate and read content
+                
+                PrintStream outcome = new PrintStream(new FileOutputStream("simulation.txt"));
+                System.setOut(outcome); // Redirect standard output
+
                 createAircrafts(parser.getContent()); // Creating aircraft objects based on parsed content
                 simulation(); // Starting the simulation
             }
